@@ -53,9 +53,7 @@ Ortho4XP:
 	cd $@ && patch -p1 -u < ../ortho4xp.diff && git add . && git commit -m "Patched for Ortho4XP v1.31"
 	cd $@ && git pull origin d3bf07859c28a6ba5a90b600dd5d227366de4c43 --rebase || true
 	# Loop to resolve conflicts by skipping commits
-	cd $@ && while ! git rebase --continue && git rebase --skip; do
-		echo "Conflict detected and skipped."
-	done
+	cd $@ && git rebase --skip
 	cp extract_overlay.py $@/.
 	cp Ortho4XP.cfg $@/.
 	mkdir $@/tmp
